@@ -16,7 +16,10 @@ def store(request):
 	cartItems = data['cartItems']
 
 	products = Product.objects.all()
-	context = {'products':products, 'cartItems':cartItems}
+	# Get or create customer if user is authenticated
+
+    # Pass all necessary data to the template
+	context = {'products':products, 'cartItems':cartItems,}
 	return render(request, 'store/store.html', context)
 
 def cart(request):
