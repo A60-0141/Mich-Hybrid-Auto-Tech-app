@@ -64,19 +64,20 @@
 </div>
 
 <!-- Products -->
-<div class="container">
-    <div class="row">
-        {% for product in products %}
-        <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-            <img class="thumbnail img-fluid" src="{{ product.imageURL }}">
-            <div class="product-info">
-                <h6><strong>{{ product.name }}</strong></h6>
-                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-primary update-cart">Add to Cart</button>
-                <h4><strong>${{ product.price|floatformat:2 }}</strong></h4>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+<div class="row">
+    {% for product in products %}
+<div class="col-lg-4">
+	<img class="thumbnail" src="{{product.imageURL}}">
+	<div class="box-element product">
+		<h6><strong>{{product.name}}</strong></h6>
+		<hr>
+        <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+		
+		<h4><strong>${{product.price|floatformat:2}}</strong></h4>
+	</div>
+</div>
+{% endfor %}
+
 </div>
 
 <!-- Partners -->
@@ -256,6 +257,28 @@
     }
 </style>
 
-{% endblock %}
+
+
+
+
+
+<script type="text/javascript">
+    window.onload = function() {
+        if (!sessionStorage.getItem("reloaded")) {
+            sessionStorage.setItem("reloaded", "true");
+            location.reload();
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+{% endblock content %}
+
 
 
