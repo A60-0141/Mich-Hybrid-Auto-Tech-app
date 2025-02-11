@@ -99,3 +99,18 @@ def processOrder(request):
 		)
 
 	return JsonResponse('Payment submitted..', safe=False)
+
+
+
+
+from django.shortcuts import render
+from .models import Customer
+
+def store(request):
+    if request.user.is_authenticated:
+        customer, created = Customer.objects.get_or_create(user=request.user)
+    else:
+        customer = None  # If the user is not logged in
+
+    context = {'customer': customer}
+    return render(request, 'store/store.html', context)
