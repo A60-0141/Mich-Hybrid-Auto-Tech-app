@@ -117,3 +117,37 @@ def store(request):
 
     context = {'customer': customer}
     return render(request, 'store/store.html', context)
+
+
+
+
+
+def store(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    
+    # Fetch products from the database
+    products = Product.objects.all()
+
+    # Debugging: Check if products exist
+    if not products:
+        print("⚠️ No products found in the database!")
+    else:
+        print(f"✅ Found {products.count()} products:")
+        for product in products:
+            print(f"- {product.name}, Image: {product.imageURL}")
+
+    context = {'products': products, 'cartItems': cartItems}
+    return render(request, 'store/store.html', context)
+
+
+
+
+
+from django.shortcuts import render, get_object_or_404
+from .models import Product
+
+def product_detail(request, id):
+    product = get_object_or_404(Product, id=id)
+    return render(request, 'store/product_detail.html', {'product': product})
+
