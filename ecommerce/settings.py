@@ -29,6 +29,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['mich-hybrid-auto-tech-app-production.up.railway.app']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://mich-hybrid-auto-tech-app-production.up.railway.app",
+]
+
+
 
 # Application definition
 
