@@ -10,6 +10,139 @@
 
 
 
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Container for the products */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        /* Individual product containers */
+        .row .col-lg-4 {
+            flex: 1 1 30%; /* Adjust the percentage to control the width of the products */
+            box-sizing: border-box;
+            padding: 10px;
+            max-width: 33.33%; /* Ensures three products per row */
+        }
+
+        /* Ensures the products adapt to different screen sizes */
+        @media (max-width: 1200px) {
+            .row .col-lg-4 {
+                flex: 1 1 45%; /* Adjust to two products per row on smaller screens */
+                max-width: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .row .col-lg-4 {
+                flex: 1 1 100%; /* Full width on very small screens */
+                max-width: 100%;
+            }
+        }
+
+        /* Styling for the product thumbnails */
+        .thumbnail {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Additional box styling */
+        .box-element.product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{product.imageURL}}">
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <hr>
+                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <a class="btn btn-outline-success" href="{% url 'product' product.id %}">View</a>
+                <h4><strong>${{product.price|floatformat:2}}</strong></h4>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    <!DOCTYPE  html>
+{% load static %}
+
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<html lang="zxx">
+
+
+<!-- home207:13-->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+
+    <meta name="keywords" content="Furniture, Decor, Interior">
+    <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
+    <meta name="author" content="tivatheme">
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700' %}" rel="stylesheet">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/nivo-slider/css/nivo-slider.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/nivo-slider/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/nivo-slider/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/font-material/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/slider-range/css/jslider.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/owl-carousel/assets/owl.carousel.min.css' %}">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reponsive.css' %}">
+	<link rel="stylesheet" href="{% static 'css/mobile.css' %}">
+
+</head>
+
+<body id="home2">
+
+
+
+
+
+
+
+
+
 
 
 <!-- Slide Show -->
@@ -24,22 +157,6 @@
 
 
 
-
-
-<div class="row"></div>
-    {% for product in products %}
-    <div class="col-lg-4">
-        <img class="thumbnail" src="{{product.imageURL}}">
-        <div class="box-element product">
-            <h6><strong>{{product.name}}</strong></h6>
-            <hr>
-            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-            <a class="btn btn-outline-success" href="{% url 'product' product.id %}">View</a>
-            <h4><strong>${{product.price|floatformat:2}}</strong></h4>
-        </div>
-    </div>
-    {% endfor %}
-</div>
 
 
 
@@ -261,6 +378,72 @@
         }
     }
 </style>
+
+
+
+
+
+
+
+    <!-- Vendor JS -->
+    <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'libs/popper/popper.min.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'libs/nivo-slider/js/jquery.nivo.slider.js' %}"></script>
+    <script src="{% static 'libs/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'libs/slider-range/js/tmpl.js' %}"></script>
+    <script src="{% static 'libs/slider-range/js/jquery.dependClass-0.1.js' %}"></script>
+    <script src="{% static 'libs/slider-range/js/draggable-0.1.js' %}"></script>
+    <script src="{% static 'libs/slider-range/js/jquery.slider.js' %}"></script>
+
+    <!-- Template JS -->
+    <script src="{% static 'js/theme.js' %}"></script>
+
+
+
+
+
+
+
+
+	
+		<!-- Your content here -->
+		
+		<!-- Include jQuery and Owl Carousel JS files -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				if ($(window).width() <= 1024) {
+					$('.category-product.owl-carousel').owlCarousel({
+						loop: true,
+						margin: 10,
+						nav: true,
+						dots: true,
+						responsive: {
+							0: {
+								items: 4,
+							},
+							480: {
+								items: 4,
+							},
+							768: {
+								items: 4,
+							}
+						}
+					});
+				}
+			});
+		</script>
+
+	
+</body>
+
+
+<!-- home207:34-->
+</html>
+
+
 
 
 
