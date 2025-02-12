@@ -46,6 +46,7 @@
 				<small>Paypal Options</small>
 				<div id="paypal-button-container"></div>
 				<!-- <button id="make-payment">Make payment</button> -->
+				<button id="make-payment">Make payment</button>
 			</div>
 			
 		</div>
@@ -72,9 +73,9 @@
 		</div>
 	</div>
 
-	<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+	<!--<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script> -->
 
-	<script>
+	<!-- <script>
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 
@@ -102,7 +103,7 @@
             }
 
         }).render('#paypal-button-container');
-    </script>
+    </script> -->
 
 	<script type="text/javascript">
 		var shipping = '{{order.shipping}}'
@@ -137,11 +138,11 @@
 	    	document.getElementById('payment-info').classList.remove('hidden')
 	    })
 
-		/*
+		
 		document.getElementById('make-payment').addEventListener('click', function(e){
 	    	submitFormData()
 	    })
-			*/
+			
 
 		function submitFormData(){
 	    	console.log('Payment button clicked')
