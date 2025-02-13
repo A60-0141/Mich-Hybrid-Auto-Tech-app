@@ -1280,29 +1280,7 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
-		<script>
-			$(document).ready(function() {
-				if ($(window).width() <= 1024) {
-					$('.category-product.owl-carousel').owlCarousel({
-						loop: true,
-						margin: 10,
-						nav: true,
-						dots: true,
-						responsive: {
-							0: {
-								items: 4,
-							},
-							480: {
-								items: 4,
-							},
-							768: {
-								items: 4,
-							}
-						}
-					});
-				}
-			});
-		</script>
+		
 
 	
 </body>
